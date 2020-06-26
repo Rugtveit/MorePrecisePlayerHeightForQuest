@@ -1,0 +1,31 @@
+{
+    "id": "preciseplayerheight",
+    "name": "MorePrecisePlayerHeight",
+    "author": "Rugtveit",
+    "description": [
+        
+        "Original Creator: ErisApps        
+        A very small Beat Saber mod that's let you view your own height with higher precision... at least one more decimal."
+        
+    ],
+    "category": "Gameplay",
+    "gameVersion": "1.10.0",
+    "version": "0.1.0",
+    "platform": "Quest",
+    "components": [
+        {
+            "type": "HookMod",
+            "installAction": {
+                "installLibraryFile": "libpreciseplayerheight.so"
+            },
+            "uninstallAction": {
+                "removeLibraryFile": "libpreciseplayerheight.so"
+            }
+        },
+	{
+            "type": "FileCopyMod",
+            "sourceFileName": "libbeatsaber-hook_2019_3_0f6_0_1_0.so",
+            "targetRootedPathAndFileName": "/sdcard/Android/data/com.beatgames.beatsaber/files/libs/libbeatsaber-hook_2019_3_0f6_0_1_0.so"
+        },
+    ]
+}

@@ -1,0 +1,12 @@
+
+ndkpath.txt
+
+*.o
+
+obj/local/arm64-v8a/
+
+*.so
+
+*.zip
+
+.vscode/
