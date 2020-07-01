@@ -4,13 +4,14 @@
     "author": "Rugtveit",
     "description": [
         
-        "Original Creator: ErisApps        
-        A very small Beat Saber mod that's let you view your own height with higher precision... at least one more decimal."
+        "Original Creator: ErisApps",
+        "A very small Beat Saber mod that's let you view your own height with higher precision... at least one more decimal.",
+	"New feature: Now has the ability to show feet and inches, enable it in the config!"
         
     ],
     "category": "Gameplay",
     "gameVersion": "1.10.0",
-    "version": "0.1.0",
+    "version": "1.1.0",
     "platform": "Quest",
     "components": [
         {
