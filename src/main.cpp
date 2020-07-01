@@ -48,13 +48,13 @@ MAKE_HOOK_OFFSETLESS(PlayerHeightSettingsController_RefreshUI, void, Il2CppObjec
             std::stringstream stream;
             stream << std::fixed << std::setprecision(1) << inches;
             std::string precisionInchesFloat = stream.str();
-            heightString = std::to_string(wholeFeet) + "\n" + precisionInchesFloat;
+            heightString = std::to_string(wholeFeet) + "ft" + "\n" + precisionInchesFloat + "\"";
         } else 
         {
             std::stringstream stream;
             stream << std::fixed << std::setprecision(2) << playerHeight;
             std::string precisionHeightFloat = stream.str();
-            heightString = precisionHeightFloat + "m";
+            heightString = "<size=90%>" + precisionHeightFloat + "m" + "</size>";
         }
         
         CRASH_UNLESS(il2cpp_utils::SetPropertyValue(heightText, "text", il2cpp_utils::createcsstr(heightString)));
