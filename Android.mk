@@ -19,35 +19,32 @@ TARGET_ARCH_ABI := arm64-v8a
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := hook
-
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
-
-# Build the modloader shared library
-include $(CLEAR_VARS)
-LOCAL_MODULE	        := modloader
-LOCAL_SRC_FILES         := ./extern/beatsaber-hook/include/libs/libmodloader.so
-LOCAL_EXPORT_C_INCLUDES := ./extern/beatsaber-hook/include
-include $(PREBUILT_SHARED_LIBRARY)
 
 # Build the beatsaber-hook shared library, SPECIFICALLY VERSIONED!
 include $(CLEAR_VARS)
-LOCAL_MODULE	        := beatsaber-hook_2019_3_0f6_0_2_1
-LOCAL_SRC_FILES         := ./extern/beatsaber-hook/libs/arm64-v8a/libbeatsaber-hook_2019_3_0f6_0_2_1.so
-LOCAL_EXPORT_C_INCLUDES := ./extern/beatsaber-hook/
+LOCAL_MODULE := beatsaber-hook_0_7_1
+LOCAL_EXPORT_C_INCLUDES := extern/beatsaber-hook
+LOCAL_SRC_FILES := extern/libbeatsaber-hook_0_7_1.so
+include $(PREBUILT_SHARED_LIBRARY)
+# Creating prebuilt for dependency: modloader - version: 1.0.2
+include $(CLEAR_VARS)
+LOCAL_MODULE := modloader
+LOCAL_EXPORT_C_INCLUDES := extern/modloader
+LOCAL_SRC_FILES := extern/libmodloader.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-# Include the two libraries
-LOCAL_SHARED_LIBRARIES := modloader
-LOCAL_SHARED_LIBRARIES += beatsaber-hook_2019_3_0f6_0_2_1
-LOCAL_LDLIBS     := -llog
-LOCAL_CFLAGS     := -I"C:\Program Files\Unity\Hub\Editor\2019.3.0f6\Editor\Data\il2cpp\libil2cpp"
-LOCAL_MODULE     := preciseplayerheight
-LOCAL_CPPFLAGS   := -std=c++2a
-LOCAL_C_INCLUDES := ./include ./src
-LOCAL_SRC_FILES  += $(call rwildcard,src/,*.cpp)
-LOCAL_SRC_FILES  += $(call rwildcard,extern/beatsaber-hook/src/inline-hook,*.cpp)
-LOCAL_SRC_FILES  += $(call rwildcard,extern/beatsaber-hook/src/inline-hook,*.c)
+LOCAL_MODULE := MorePrecisePlayerHeightForQuest
+LOCAL_SRC_FILES += $(call rwildcard,src/,*.cpp)
+LOCAL_SRC_FILES += $(call rwildcard,extern/beatsaber-hook/src/inline-hook,*.cpp)
+LOCAL_SRC_FILES += $(call rwildcard,extern/beatsaber-hook/src/inline-hook,*.c)
+LOCAL_SHARED_LIBRARIES += modloader
+LOCAL_SHARED_LIBRARIES += beatsaber-hook_0_7_1
+LOCAL_LDLIBS += -llog
+LOCAL_CFLAGS += -I"C:\Program Files\Unity\Hub\Editor\2019.3.0f6\Editor\Data\il2cpp\libil2cpp" -DID='"MorePrecisePlayerHeightForQuest"' -DVERSION='"0.1.1"' -I'./shared' -I'./extern'
+LOCAL_CPPFLAGS += -std=c++2a
+LOCAL_C_INCLUDES += ./include ./src
 include $(BUILD_SHARED_LIBRARY)
 
 # In order to make this mod work with BMBF, you must provide a zip file with the specific libbeatsaber-hook.so (file copied to the libs directory)

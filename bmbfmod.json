@@ -10,8 +10,8 @@
         
     ],
     "category": "Gameplay",
-    "gameVersion": "1.10.0",
-    "version": "1.1.0",
+    "gameVersion": "1.11.1",
+    "version": "0.1.1",
     "platform": "Quest",
     "components": [
         {
@@ -23,10 +23,11 @@
                 "removeLibraryFile": "libpreciseplayerheight.so"
             }
         },
-	{
-            "type": "FileCopyMod",
-            "sourceFileName": "libbeatsaber-hook_2019_3_0f6_0_2_1.so",
-            "targetRootedPathAndFileName": "/sdcard/Android/data/com.beatgames.beatsaber/files/libs/libbeatsaber-hook_2019_3_0f6_0_2_1.so"
-        },
+		{
+            "type": "HookModLibrary",
+            "installAction": {
+                "installLibraryFile": "libbeatsaber-hook_0_7_1.so"
+            }
+        }
     ]
 }
