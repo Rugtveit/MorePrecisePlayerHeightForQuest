@@ -35,9 +35,8 @@ MAKE_HOOK_OFFSETLESS(PlayerHeightSettingsController_RefreshUI, void, Il2CppObjec
 {
     if(Config.enabled) 
     {
-        playerSettings = CRASH_UNLESS(il2cpp_utils::GetFieldValue(self, "_playerSettings"));
         heightText = CRASH_UNLESS(il2cpp_utils::GetFieldValue(self, "_text"));
-        playerHeight = CRASH_UNLESS(il2cpp_utils::GetPropertyValue<float>(playerSettings, "playerHeight"));
+        playerHeight = CRASH_UNLESS(il2cpp_utils::GetFieldValue<float>(self, "_value"));
         std::string heightString; 
         
         if(Config.measureInFeet)
